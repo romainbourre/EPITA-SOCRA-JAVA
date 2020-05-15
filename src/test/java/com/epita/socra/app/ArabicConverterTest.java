@@ -66,11 +66,33 @@ public class ArabicConverterTest {
         this.givenRomanValue_ReturnArabicValue("XXX", "30");
     }
 
+    @Test()
+    public void givenRomanNumber_WhenInputIsXLII_Return42()
+    {
+        this.givenRomanValue_ReturnArabicValue("XLII", "42");
+    }
+
+    @Test()
+    public void givenRomanNumber_WhenInputIsLXXXIII_Return83()
+    {
+        this.givenRomanValue_ReturnArabicValue("LXXXIII", "83");
+    }
+
+    @Test()
+    public void givenRomanNumber_WhenInputIsMCMIII_Return1903()
+    {
+        this.givenRomanValue_ReturnArabicValue("MCMIII", "1903");
+    }
+
+    @Test()
+    public void givenRomanNumber_WhenInputIsCMXCIX_Return999()
+    {
+        this.givenRomanValue_ReturnArabicValue("CMXCIX", "999");
+    }
+
     @Test(expected = InvalidArgumentException.class)
     public void givenRomanNumber_WhenInputIsXXXX_ThrowInvalidArgumentException() throws InvalidArgumentException {
         String romanValue = "XXXX";
         this.converter.convert(romanValue);
     }
-
-
 }
