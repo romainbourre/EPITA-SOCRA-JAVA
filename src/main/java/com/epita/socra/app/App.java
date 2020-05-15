@@ -18,7 +18,7 @@ public final class App {
 
     /**
      * Says hello to the world.
-     * 
+     *
      * @param args The arguments of the program.
      */
     public static void main(String[] args) {
@@ -26,9 +26,23 @@ public final class App {
         application.run();
     }
 
-    public void run(){
-        adapter.write("Hello, what's your name ?");
-        String name = adapter.read();
-        adapter.write("Nice to meet you, " + name + " !");
+    public void run() {
+        try
+        {
+            adapter.write("Hello, what's your number ?");
+            String valueToConvert = adapter.read();
+
+            IConverter romanConverter = new RomanConverter();
+            IConverter arabicConverter = new ArabicConverter();
+
+            String romanNumber = romanConverter.convert(valueToConvert);
+            String arabicNumber = arabicConverter.convert(valueToConvert);
+            adapter.write("Your Roman number is: " + romanNumber);
+            adapter.write("Your Arabic number is: " + arabicNumber);
+        }
+        catch (Exception e)
+        {
+            System.out.println("error: " + e.getMessage());
+        }
     }
 }

@@ -12,6 +12,9 @@ public class ConsoleAdapter implements IOAdapter {
     }
 
     @Override
+    public int readInteger() { return scan.nextInt(); }
+
+    @Override
     public void write(String message) {
         System.out.println(message);
     }
